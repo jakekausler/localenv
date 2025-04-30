@@ -6,7 +6,7 @@ alias python=python3
 alias pip=pip3
 
 # Reload zsh config files
-alias reload="source $ZDOTDIR/.zshenv && source $ZDOTDIR/.zshrc"
+alias reload="source $ZDOTDIR/.zshenv && source $ZDOTDIR/.zshrc && tmux source-file $HOME/.config/tmux/.tmux.conf"
 
 # git aliases
 alias ga="git add ."

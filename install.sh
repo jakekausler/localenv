@@ -101,6 +101,10 @@ install_missing cargo rust "curl https://sh.rustup.rs -sSf | sh"
 
 # tmux
 install_missing tmux tmux "sudo apt -y install tmux"
+if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 
 # fzf
 install_missing "fzf" "fzf" "brew install fzf"

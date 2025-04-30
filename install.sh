@@ -132,7 +132,12 @@ install_missing rg ripgrep "brew install ripgrep"
 install_missing delta delta "brew install git-delta"
 
 # bat
-install_missing batcat bat "sudo apt install -y bat"
+install_missing batcat bat "
+  wget -O /tmp/bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-gnu.tar.gz
+  tar -xzf /tmp/bat.tar.gz
+  sudo mv /tmp/bat*/bat /usr/bin/bat
+  rm -rf /tmp/bat.tar.gz /tmp/bat*
+"
 wget -O $HOME/.config/bat/syntaxes/cmd-help.sublime-syntax https://raw.githubusercontent.com/victor-gp/cmd-help-sublime-syntax/refs/heads/main/syntaxes/cmd-help.sublime-syntax
 bat cache --build
 

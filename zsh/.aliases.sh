@@ -66,9 +66,6 @@ alias lS='eza -1 --color=always --group-directories-first --icons=always'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons=always'
 alias l.="eza -a | grep -E '^\.'"
 
-# Bat
-alias bat=batcat
-
 # Replace cat with bat
 alias cat=bat
 

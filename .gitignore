@@ -1,4 +1,5 @@
 github-copilot/
+gh/hosts.yml
 htop/
 procps/
 zsh/.secrets.sh

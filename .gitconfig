@@ -1,0 +1,24 @@
+[user]
+	email = jake.kausler@nearpod.com
+	name = Jake Kausler
+[push]
+	autoSetupRemote = true
+[core]
+	editor = vim
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[include]
+	path = /home/jakekausler/.config/delta/themes.gitconfig
+[delta]
+	side-by-side = true
+	line-numbers = true
+	navigate = true  # use n and N to move between diff sections
+	dark = true      # or light = true, or omit for auto-detection
+[merge]
+	conflictstyle = zdiff3

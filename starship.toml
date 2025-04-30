@@ -1,0 +1,7 @@
+[python]
+format = "using [${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style) "
+
+[nodejs]
+format = "using [${symbol}${version}]($style) "
+symbol = " "
+

@@ -1,0 +1,7 @@
+github-copilot/
+htop/
+procps/
+zsh/.secrets.sh
+zsh/.zcompdump*
+zsh/.zsh_history
+__pycache__/

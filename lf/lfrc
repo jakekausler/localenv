@@ -1,0 +1,36 @@
+set preview
+set hidden
+set icons
+
+# Change directory with gd
+cmd cd-to-dir %{{
+    target="$f"
+    [ -d "$target" ] || target="$(dirname "$target")"
+    [ -n "$LF_LAST_DIR_PATH" ] && printf %s "$target" > "$LF_LAST_DIR_PATH"
+    lf -remote "send $id quit"
+}}
+map gd cd-to-dir
+
+# Open tmux window with gD
+cmd tmux-open-dir %{{
+    target="$f"
+    [ -d "$target" ] || target="$(dirname "$target")"
+    tmux new-window -c "$target"
+}}
+map gD tmux-open-dir
+
+# Enter directory or edit file with <enter>
+cmd smart-enter ${{
+    if [ -d "$f" ]; then
+        # If directory, instruct lf to enter it:
+        lf -remote "send $id cd \"$f\""
+    elif [ -n "$TMUX" ]; then
+        # If inside tmux, open editor in a new tmux window (non-blocking)
+        tmux new-window -c "$PWD" "$EDITOR \"$f\""
+    else
+        # Outside tmux: open file in $EDITOR and wait until it closes
+        $EDITOR "$f"
+    fi
+}}
+map <enter> smart-enter
+

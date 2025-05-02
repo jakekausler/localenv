@@ -2,15 +2,6 @@
 
 # Used for boostrapping Ubuntu x86. Other OSes might not work
 
-SCRIPT_PATH=$(dirname "$(realpath "$0")")
-EXPECTED_DIR="$HOME/.config"
-
-if [[ "$SCRIPT_PATH" != "$EXPECTED_DIR" ]]; then
-  echo "❌ This script must be run from within \$HOME/.config"
-  echo "📂 Current path: $SCRIPT_PATH"
-  exit 1
-fi
-
 # Ask for sudo at the beginning
 if sudo -v; then
   # Keep-alive: update existing sudo time stamp until script finishes
@@ -24,14 +15,57 @@ else
   exit 1
 fi
 
+# Ensure the .config directory exists
+mkdir -p "$HOME/.config"
+export CONFIG_DIR="$HOME/.config"
+export SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Now you can run sudo commands safely without further prompts
 echo "✅ Sudo access granted."
+
+# Set up links
+ln -sf "$SCRIPT_PATH/starship.toml" "$CONFIG_DIR/starship.toml"
+rm -rf "$CONFIG_DIR/bash"
+ln -sf "$SCRIPT_PATH/bash" "$CONFIG_DIR/bash"
+rm -rf "$CONFIG_DIR/bat"
+ln -sf "$SCRIPT_PATH/bat" "$CONFIG_DIR/bat"
+rm -rf "$CONFIG_DIR/btop"
+ln -sf "$SCRIPT_PATH/btop" "$CONFIG_DIR/btop"
+rm -rf "$CONFIG_DIR/delta"
+ln -sf "$SCRIPT_PATH/delta" "$CONFIG_DIR/delta"
+rm -rf "$CONFIG_DIR/eza"
+ln -sf "$SCRIPT_PATH/eza" "$CONFIG_DIR/eza"
+rm -rf "$CONFIG_DIR/glow"
+ln -sf "$SCRIPT_PATH/glow" "$CONFIG_DIR/glow"
+rm -rf "$CONFIG_DIR/lazygit"
+ln -sf "$SCRIPT_PATH/lazygit" "$CONFIG_DIR/lazygit"
+rm -rf "$CONFIG_DIR/lf"
+ln -sf "$SCRIPT_PATH/lf" "$CONFIG_DIR/lf"
+rm -rf "$CONFIG_DIR/mods"
+ln -sf "$SCRIPT_PATH/mods" "$CONFIG_DIR/mods"
+rm -rf "$CONFIG_DIR/nvim"
+ln -sf "$SCRIPT_PATH/nvim" "$CONFIG_DIR/nvim"
+rm -rf "$CONFIG_DIR/tealdeer"
+ln -sf "$SCRIPT_PATH/tealdeer" "$CONFIG_DIR/tealdeer"
+rm -rf "$CONFIG_DIR/thefuck"
+ln -sf "$SCRIPT_PATH/thefuck" "$CONFIG_DIR/thefuck"
+rm -rf "$CONFIG_DIR/tmux"
+ln -sf "$SCRIPT_PATH/tmux" "$CONFIG_DIR/tmux"
+rm -rf "$CONFIG_DIR/zsh"
+ln -sf "$SCRIPT_PATH/zsh" "$CONFIG_DIR/zsh"
+ln -sf "$CONFIG_DIR/zsh/.zshenv" "$HOME/.zshenv"
+ln -sf "$CONFIG_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$CONFIG_DIR/bash/.bashrc" "$HOME/.bashrc"
+ln -sf "$CONFIG_DIR/.gitconfig" "$HOME/.gitconfig"
+sudo ln -sf "$CONFIG_DIR/bat/bat-extras/src/batdiff.sh" "$HOME/.local/bin/batdiff"
+sudo ln -sf "$CONFIG_DIR/bat/bat-extras/src/batgrep.sh" "$HOME/.local/bin/batgrep"
+sudo ln -sf "$CONFIG_DIR/bat/bat-extras/src/batman.sh" "$HOME/.local/bin/batman"
 
 # Add env variables
 ask_for_variable() {
   local var_name=$1
   local prompt=$2
-  local secrets_file="$HOME/.config/zsh/.secrets.sh"
+  local secrets_file="$HOME/.secrets.sh"
 
   if [[ -n "$BASH_VERSION" ]]; then
     read -p "$prompt: " input
@@ -47,7 +81,7 @@ ask_for_variable() {
   fi
 
   # Ensure the secrets file exists
-  mkdir -p "$(dirname "$secrets_file")"
+  mkdir -p "$secrets_file"
   touch "$secrets_file"
 
   # Check if the variable is already defined
@@ -67,15 +101,6 @@ ask_for_variable GITHUB_ACCESS_TOKEN "Enter your GitHub access token (blank to s
 
 # Source zsh variables
 source $HOME/.zshenv
-
-# Set up links
-ln -sf "$SCRIPT_PATH/zsh/.zshenv" "$HOME/.zshenv"
-ln -sf "$SCRIPT_PATH/tmux/.tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$SCRIPT_PATH/bash/.bashrc" "$HOME/.bashrc"
-ln -sf "$SCRIPT_PATH/.gitconfig" "$HOME/.gitconfig"
-sudo ln -sf "$SCRIPT_PATH/bat/bat-extras/src/batdiff.sh" "$HOME/.local/bin/batdiff"
-sudo ln -sf "$SCRIPT_PATH/bat/bat-extras/src/batgrep.sh" "$HOME/.local/bin/batgrep"
-sudo ln -sf "$SCRIPT_PATH/bat/bat-extras/src/batman.sh" "$HOME/.local/bin/batman"
 
 # Update apt
 sudo apt update
@@ -136,13 +161,13 @@ install_missing rg ripgrep "brew install ripgrep"
 install_missing delta delta "brew install git-delta"
 
 # bat
-install_missing batcat bat "
+install_missing bat bat "
   wget -O /tmp/bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-gnu.tar.gz
-  tar -xzf /tmp/bat.tar.gz
+  tar -xzf /tmp/bat.tar.gz -C /tmp/
   sudo mv /tmp/bat*/bat /usr/bin/bat
   rm -rf /tmp/bat.tar.gz /tmp/bat*
 "
-wget -O $HOME/.config/bat/syntaxes/cmd-help.sublime-syntax https://raw.githubusercontent.com/victor-gp/cmd-help-sublime-syntax/refs/heads/main/syntaxes/cmd-help.sublime-syntax
+wget -O $CONFIG_DIR/bat/syntaxes/cmd-help.sublime-syntax https://raw.githubusercontent.com/victor-gp/cmd-help-sublime-syntax/refs/heads/main/syntaxes/cmd-help.sublime-syntax
 bat cache --build
 
 # eva
@@ -174,8 +199,8 @@ install_missing glow glow "brew install glow"
 
 # thefuck
 install_missing fuck thefuck "brew install thefuck"
-mkdir -p $HOME/.config/thefuck
-echo "excluded_search_path_prefixes = ['/mnt/c']" > $HOME/.config/thefuck/settings.py
+mkdir -p $CONFIG_DIR/thefuck
+echo "excluded_search_path_prefixes = ['/mnt/c']" > $CONFIG_DIR/thefuck/settings.py
 
 # fd
 install_missing fd fd "sudo apt install -y fd-find"
@@ -201,7 +226,7 @@ install_missing mods mods "brew install charmbracelet/tap/mods"
 
 # Source bash and zsh files
 source $HOME/.bashrc
-source $HOME/.config/zsh/.zshrc
+source $CONFIG_DIR/zsh/.zshrc
 
 echo "All done! You may still need to log into github copilot. To do so, run the following command and follow the instructions:"
 echo "    gh auth login --with-token $$GITLAB_ACCESS_TOKEN | gh auth login --scopes copilot"

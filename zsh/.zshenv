@@ -22,7 +22,7 @@ export TMPDIR="/tmp"
 export NPTOOLS_DISABLE_METRICS=true
 
 # Secrets
-source "$ZDOTDIR/.secrets.sh"
+source "$HOME/.secrets.zsh"
 
 # batdiff
 export BATDIFF_USE_DELTA=true

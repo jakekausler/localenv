@@ -1,0 +1,9 @@
+[submodule "eza"]
+	path = eza
+	url = https://github.com/eza-community/eza.git
+[submodule "bat/bat-extras"]
+	path = bat/bat-extras
+	url = https://github.com/eth-p/bat-extras.git
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git

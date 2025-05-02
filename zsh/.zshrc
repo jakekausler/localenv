@@ -35,9 +35,6 @@ eval $(ssh-agent) &> /dev/null
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# NPTools Completion
-. <(nptools --completion)
-
 # Starship
 eval "$(starship init zsh)"
 
@@ -46,9 +43,6 @@ eval "$(zoxide init zsh)"
 
 # Navi Widget
 eval "$(navi widget zsh)"
-
-# ChatGPT CLI
-. <(chatgpt --set-completions zsh)
 
 # The Fuck
 eval $(thefuck --alias)

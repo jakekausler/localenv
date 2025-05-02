@@ -7,3 +7,6 @@
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
 	url = https://github.com/jakekausler/ohmyzsh.git
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:jakekausler/nvim.git

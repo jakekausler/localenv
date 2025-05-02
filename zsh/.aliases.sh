@@ -117,3 +117,7 @@ alias tmxd="tmuxinator delete"
 # Vim-like exit
 alias ":q"="exit"
 
+# Add System-Specific aliases
+if [[ -f $HOME/.aliases.zsh ]]; then
+  source $HOME/.aliases.zsh
+fi

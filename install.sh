@@ -15,6 +15,12 @@ else
   exit 1
 fi
 
+# Ensure we have homebrew
+if ! command -v "brew" &> /dev/null; then
+  echo "You need to install homebrew. Exiting"
+  exit 1
+fi
+
 # Ensure the .config directory exists
 mkdir -p "$HOME/.config"
 export CONFIG_DIR="$HOME/.config"
@@ -65,7 +71,7 @@ sudo ln -sf "$CONFIG_DIR/bat/bat-extras/src/batman.sh" "$HOME/.local/bin/batman"
 ask_for_variable() {
   local var_name=$1
   local prompt=$2
-  local secrets_file="$HOME/.secrets.sh"
+  local secrets_file="$HOME/.secrets.zsh"
 
   if [[ -n "$BASH_VERSION" ]]; then
     read -p "$prompt: " input
@@ -81,7 +87,6 @@ ask_for_variable() {
   fi
 
   # Ensure the secrets file exists
-  mkdir -p "$secrets_file"
   touch "$secrets_file"
 
   # Check if the variable is already defined
@@ -122,14 +127,18 @@ install_missing() {
 }
 
 # rust
-install_missing cargo rust "curl https://sh.rustup.rs -sSf | sh"
+install_missing cargo rust "curl https://sh.rustup.rs -sSf | sh && echo 'Re-run now that rust is installed.' && exit"
+
+# starship
+install_missing starship starship "brew install starship"
+
+# 
 
 # tmux
 install_missing tmux tmux "sudo apt -y install tmux"
 if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
-
 
 # fzf
 install_missing "fzf" "fzf" "brew install fzf"
@@ -220,6 +229,9 @@ wget -O $OPENAI_CONFIG_HOME/mdrender.sh https://raw.githubusercontent.com/kardol
 
 # tmuxinator
 install_missing tmuxinator tmuxinator "brew install tmuxinator"
+
+# zoxide
+install_missing z zoxide "curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh"
 
 # mods
 install_missing mods mods "brew install charmbracelet/tap/mods"

@@ -54,4 +54,4 @@ source $ZDOTDIR/fzf-tab.zsh
 source $ZDOTDIR/widgets.zsh
 
 # ZSH Syntax Highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

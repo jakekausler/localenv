@@ -132,7 +132,7 @@ install_missing cargo rust "curl https://sh.rustup.rs -sSf | sh && echo 'Re-run 
 # starship
 install_missing starship starship "brew install starship"
 
-# 
+#
 
 # tmux
 install_missing tmux tmux "sudo apt -y install tmux"
@@ -186,7 +186,7 @@ install_missing eza eza "cargo install eza"
 install_missing sd sd "cargo install sd"
 
 # mycli
-install_missing mycli mycli "pip install -U mycli"
+install_missing mycli mycli "brew install mycli"
 
 # simplehttp
 install_missing simplehttp simplehttp "go install github.com/snwfdhmp/simplehttp@latest"

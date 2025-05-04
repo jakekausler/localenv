@@ -117,6 +117,11 @@ alias tmxd="tmuxinator delete"
 # Vim-like exit
 alias ":q"="exit"
 
+# Open Config Editors
+alias tedit="vim $HOME/.tmux.conf"
+alias vedit="vim $HOME/.config/nvim/init.lua"
+alias zedit="vim $ZDOTDIR/.zshrc -c 'luafile $ZDOTDIR/nvim_layout.lua'"
+
 # Add System-Specific aliases
 if [[ -f $HOME/.aliases.zsh ]]; then
   source $HOME/.aliases.zsh

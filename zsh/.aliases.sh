@@ -16,6 +16,7 @@ alias gp="git pull"
 alias gs="git status"
 alias gac="ga && gc"
 alias gco="git checkout"
+alias gd="git diff"
 
 # grep
 alias grep='grep --color=auto'

@@ -18,6 +18,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-auto-venv
 	zsh-completions
+	zsh-fzf-history-search
 )
 
 # Tmux

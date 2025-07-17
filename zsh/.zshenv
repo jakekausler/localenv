@@ -34,3 +34,6 @@ export OPENAI_DATA_HOME="$OPENAI_CONFIG_HOME/history"
 
 # Autosuggest
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#777777"
+
+# LevelDB
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH

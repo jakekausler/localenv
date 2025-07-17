@@ -236,6 +236,12 @@ install_missing z zoxide "curl -sSfL https://raw.githubusercontent.com/ajeetdsou
 # mods
 install_missing mods mods "brew install charmbracelet/tap/mods"
 
+install_missing locate plocate "sudo apt install -y plocate && echo 'Updating locate file database. This may take a while...' && sudo updatedb"
+
+install_missing pandoc pandoc "sudo apt install -y pandoc"
+
+install_missing claude claude "npm install -g @anthropic-ai/claude-code"
+
 # Source bash and zsh files
 source $HOME/.bashrc
 source $CONFIG_DIR/zsh/.zshrc

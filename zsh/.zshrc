@@ -56,3 +56,6 @@ source $ZDOTDIR/widgets.zsh
 
 # ZSH Syntax Highlighting
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# bun completions
+[ -s "/home/jakekausler/.bun/_bun" ] && source "/home/jakekausler/.bun/_bun"

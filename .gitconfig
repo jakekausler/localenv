@@ -1,5 +1,5 @@
 [user]
-	email = jake.kausler@nearpod.com
+	email = jakekausler@gmail.com
 	name = Jake Kausler
 [push]
 	autoSetupRemote = true
@@ -18,6 +18,17 @@
 	line-numbers = true
 	navigate = true  # use n and N to move between diff sections
 	dark = true      # or light = true, or omit for auto-detection
-	syntax-theme = gruvbox-dark
+#	syntax-theme = gruvbox-dark
+	syntax-theme                  = darcubox
+	minus-style                   = syntax "#9E2927"
+	minus-non-emph-style          = syntax "#9E2927"
+	minus-emph-style              = "#16181C" "#EB5F6A"
+	minus-empty-line-marker-style = syntax "#9E2927"
+	line-numbers-minus-style      = "#EB5F6A"
+	plus-style                    = syntax "#32593D"
+	plus-non-emph-style           = syntax "#32593D"
+	plus-emph-style               = "#16181C" "#5A9F81"
+	plus-empty-line-marker-style  = syntax "#32593D"
+	line-numbers-plus-style       = "#5A9F81"
+	line-numbers-zero-style       = "#263C50"
 [merge]
-	conflictstyle = zdiff3

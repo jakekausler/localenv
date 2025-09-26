@@ -49,6 +49,7 @@ alias du="du -ch"
 
 # NVim
 alias vim=nvim
+alias v=nvim
 
 # ls
 # alias ll='ls -alF'
@@ -68,14 +69,14 @@ alias lt='eza --tree --level=2 --color=always --group-directories-first --icons=
 alias l.="eza -a | grep -E '^\.'"
 
 # Replace cat with bat
-alias cat=bat
+#alias cat=bat
 
 # Format help messages with bat
-alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+#alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # Replace ripgrep with batgrep
-alias rg=batgrep
+#alias rg=batgrep
 
 # Replace man with batman
 alias man=batman

@@ -5,8 +5,9 @@ export HYPHEN_INSENSITIVE="true"
 export ENABLE_CORRECTION="true"
 export FPATH="$HOME/.config/eza/completions/zsh:$FPATH"
 
-# GO
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+# Go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Editor
 export EDITOR=nvim

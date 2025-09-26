@@ -131,3 +131,10 @@ fi
 
 # Chezmoi
 alias cm="chezmoi"
+
+# Slash Commands
+alias /q="exit"
+alias /quit="exit"
+alias /reload="reload"
+alias /clear="clear"
+alias /exit="exit"

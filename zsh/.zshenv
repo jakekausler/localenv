@@ -5,6 +5,9 @@ export HYPHEN_INSENSITIVE="true"
 export ENABLE_CORRECTION="true"
 export FPATH="$HOME/.config/eza/completions/zsh:$FPATH"
 
+# GO
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
 # Editor
 export EDITOR=nvim
 export VISUAL=nvim
@@ -37,3 +40,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#777777"
 
 # LevelDB
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+export PATH="$PATH:/home/jakekausler/bin"

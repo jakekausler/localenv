@@ -127,3 +127,10 @@ alias zedit="vim $ZDOTDIR/.zshrc -c 'luafile $ZDOTDIR/nvim_layout.lua'"
 if [[ -f $HOME/.aliases.zsh ]]; then
   source $HOME/.aliases.zsh
 fi
+
+# Slash Commands
+alias /q="exit"
+alias /quit="exit"
+alias /reload="reload"
+alias /clear="clear"
+alias /exit="exit"

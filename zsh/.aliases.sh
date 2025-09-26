@@ -128,3 +128,6 @@ alias zedit="vim $ZDOTDIR/.zshrc -c 'luafile $ZDOTDIR/nvim_layout.lua'"
 if [[ -f $HOME/.aliases.zsh ]]; then
   source $HOME/.aliases.zsh
 fi
+
+# Chezmoi
+alias cm="chezmoi"

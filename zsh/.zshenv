@@ -8,10 +8,15 @@ export FPATH="$HOME/.config/eza/completions/zsh:$FPATH"
 # Go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
 
 # Editor
 export EDITOR=nvim
 export VISUAL=nvim
+
+# Browser
+#export BROWSER="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c start"
+export BROWSER=wslview
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

@@ -147,4 +147,4 @@ alias tf="tail -f"
 alias c="claude --dangerously-skip-permissions"
 alias cc="claude --dangerously-skip-permissions --continue"
 alias cr="claude --dangerously-skip-permissions --resume"
-alias ct="cd $(mktemp -d) && claude --dangerously-skip-permissions"
+alias ct='cd "$(mktemp -d)" && claude --dangerously-skip-permissions'

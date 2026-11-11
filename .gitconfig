@@ -19,7 +19,7 @@
 	navigate = true  # use n and N to move between diff sections
 	dark = true      # or light = true, or omit for auto-detection
 #	syntax-theme = gruvbox-dark
-	syntax-theme                  = darcubox
+	syntax-theme                  = gruvbox-dark
 	minus-style                   = syntax "#9E2927"
 	minus-non-emph-style          = syntax "#9E2927"
 	minus-emph-style              = "#16181C" "#EB5F6A"
@@ -32,3 +32,9 @@
 	line-numbers-plus-style       = "#5A9F81"
 	line-numbers-zero-style       = "#263C50"
 [merge]
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential

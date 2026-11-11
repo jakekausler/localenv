@@ -17,6 +17,7 @@ alias gs="git status"
 alias gac="ga && gc"
 alias gco="git checkout"
 alias gd="git diff"
+alias gl="git log --oneline --graph --decorate --all"
 
 # grep
 alias grep='grep --color=auto'
@@ -138,3 +139,12 @@ alias /quit="exit"
 alias /reload="reload"
 alias /clear="clear"
 alias /exit="exit"
+
+# Tail
+alias tf="tail -f"
+
+# Claude
+alias c="claude --dangerously-skip-permissions"
+alias cc="claude --dangerously-skip-permissions --continue"
+alias cr="claude --dangerously-skip-permissions --resume"
+alias ct="cd $(mktemp -d) && claude --dangerously-skip-permissions"

@@ -21,9 +21,16 @@ plugins=(
 	zsh-fzf-history-search
 )
 
-# Tmux
-if [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
+# Tmux: auto-attach to the shared "default" session (interactive terminal logins only).
+# After a reboot, tmux-persistence restores the saved layout first (one login restores, concurrent
+# logins wait on its lock, then attach to the same session without detaching other clients).
+if [[ -o interactive && -z $TMUX && ( -n $SSH_TTY || -t 0 ) ]]; then
+    if [[ -r $HOME/.local/lib/tmux-persistence/restore-before-attach.zsh ]]; then
+        source "$HOME/.local/lib/tmux-persistence/restore-before-attach.zsh"
+        tmux_persist_attach
+    else
+        tmux attach -t default || tmux new -s default
+    fi
 fi
 
 # NVM
@@ -67,3 +74,6 @@ esac
 
 # bun completions
 [ -s "/home/jakekausler/.bun/_bun" ] && source "/home/jakekausler/.bun/_bun"
+
+# SSH agent via keychain: prompts for the GitHub key passphrase once per boot (interactive logins only)
+command -v keychain >/dev/null && eval "$(keychain --eval --quiet id_ed25519_github)"

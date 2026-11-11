@@ -47,3 +47,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#777777"
 # LevelDB
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 export PATH="$PATH:/home/jakekausler/bin"
+
+# Reuse the keychain-managed ssh-agent in non-interactive shells (never prompts)
+[ -f "$HOME/.keychain/$(hostname)-sh" ] && . "$HOME/.keychain/$(hostname)-sh"
